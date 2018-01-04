@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
 
+Purpose of the game is to roll a dice 6 times, and making decision whether to use 1 or 2 decimals, getting as close as possible to 1. The winner is the one who gets 1, or as close as possible below 1. If a players total exceeds 1, they lose. The game is still in development.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

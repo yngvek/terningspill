@@ -178,3 +178,32 @@ export class TerningspillComponent implements OnInit {
   ngOnInit() {
   }
 }
+
+
+//   it(` loaddash reduce`, async(() => {
+     
+//      var a1=[1,1,2];
+//      var a2=[1,2,1];
+//      var a3=[1,3,2];
+//      var b1=[2,1,2];
+//      var b2=[2,2,3];
+//      var b3=[2,3,5];
+
+//      var alldata=[a1,a2,a3,b1,b2,b3]
+
+//      var initVerdi=[0,0,0];
+    
+//      var resulat= _.reduce(alldata, 
+//         function(sum:number[], n):number[] {
+//             sum[n[0]]+=n[2]
+//             return sum ;
+//         }, initVerdi);
+
+//       console.debug("resulat="+resulat);
+//       expect(resulat[0]).toBe(0);
+//       expect(resulat[1]).toBe(5);
+//       expect(resulat[2]).toBe(10);
+
+//   }));
+  
+// });
