@@ -1,0 +1,72 @@
+<h2>Velkommen til {{title}}</h2>
+<form #leggTilSpillerForm="ngForm" novalidate>
+<span class="ui-float-label">
+        <input [disabled]="spilletStartet" id="spillernavn" name="spillernavn" type="text" size="30" [(ngModel)]="spillerSomSkalLeggesTil.navn" pInputText required> 
+        <label for="float-input">Spillerens navn</label>
+        <button id="leggTilSpillerKnapp" [disabled]="maksAntallSpillereOversteget() || !leggTilSpillerForm.form.valid || sjekkOmNavnErDuplikat(spillerSomSkalLeggesTil.navn) == true"
+               pButton type="button" label="Legg til spiller (maks 4)" class="ui-button-info" (click)=leggTilSpiller()>
+        </button>
+         <div [hidden]="sjekkOmNavnErDuplikat(spillerSomSkalLeggesTil.navn) == false" style="width: 250px" class="alert alert-danger">
+             Spillerne må ha forskjellige navn
+         </div>
+</span>
+</form>
+<p></p>
+<p-dataTable [value]="spillere">
+    <p-column field="navn" header="Spillernavn"></p-column>
+    <ng-template pTemplate="emptymessage">
+            Ingen spillere lagt til
+        </ng-template>
+</p-dataTable>
+<p></p>
+
+
+<button pButton [disabled]="ingenSpillere() || spilletStartet" type="button" label="Start spillet" class="ui-button-success" (click)=startSpillet()></button>
+
+<!-- <p-dropdown [options]="antallSpillere1" 
+            [(ngModel)]="valgtAntallSpillere"  
+            [style]="{'width':'150px'}" 
+            appendTo="body"
+            placeholder="Antall spillere"
+            >
+</p-dropdown> -->
+
+<form>
+<div *ngIf="spilletStartet">
+       <div *ngIf=!spilletOver>
+            Runde {{denneRunde}} / {{antallRunder}}
+            <div  *ngFor="let spiller of spillere; let i = index">  
+              <div *ngIf="i === aktivSpiller">
+            <button  pButton type="button" label="{{spiller.navn}} - trill terningen" class="ui-button-info" (click)=trillTerning(spiller.navn) 
+                     [disabled]="i !== aktivSpiller || terningResultat != null" ></button>            
+                     <!-- <div *ngIf="terningResultat"> Du trilte {{terningResultat}}</div> -->
+
+            <button *ngIf="terningResultat" pButton type="button" label="Du trilte {{terningResultat}}, legg til 0.{{terningResultat}}" class="ui-button-info" 
+                    (click)=leggTilResultatEnDesimal()></button>
+            <button *ngIf="terningResultat" pButton type="button" label="Du trilte {{terningResultat}}, legg til 0.0{{terningResultat}}" class="ui-button-info" 
+                    (click)=leggTilResultatToDesimaler()></button>
+            <p></p>
+              </div>
+            
+        </div> 
+       </div>
+        <!-- <button pButton type="button" label="Trill terning" class="ui-button-info" (click)=trillTerning()></button> -->
+        <p-progressSpinner [style]="{width: '30px', height: '30px'}" strokeWidth="5"  animationDuration="1s"></p-progressSpinner>
+</div>
+<div *ngIf=spilletOver>
+<button pButton type="button" label="Spillet er over, trykk for å starte på nytt" class="ui-button-success" (click)=startSpilletPaNytt()></button>
+<button pButton type="button" label="Spillet er over, trykk for å starte på nytt med nye spillere" class="ui-button-success" (click)=startSpilletPaNyttMedNyeSpillere()></button>
+</div>
+</form>
+<p></p>
+<p-dataTable [value]="resultater" *ngIf="spilletStartet">
+                <p-column field="spillerId" header="Spiller"></p-column>
+                <p-column field="spillerNavn" header="Spillernavn"></p-column>
+                <p-column field="runde" header="Runde"></p-column>
+                <p-column field="resultatRaa" header="Resultat trilt"></p-column>
+                <p-column field="resultat" header="Resultat valgt desimal"></p-column>
+                <p-column field="resultatTotal" header="Resultat akkumulert"></p-column>
+                <ng-template pTemplate="emptymessage">
+                        Ingen resultater ennå
+                    </ng-template>
+            </p-dataTable>
