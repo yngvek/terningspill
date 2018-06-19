@@ -178,32 +178,40 @@ export class TerningspillComponent implements OnInit {
   ngOnInit() {
   }
 }
-
-
-//   it(` loaddash reduce`, async(() => {
-     
-//      var a1=[1,1,2];
+// var a1=[1,1,2];
 //      var a2=[1,2,1];
 //      var a3=[1,3,2];
+//      var a4=[1,4,3];
 //      var b1=[2,1,2];
 //      var b2=[2,2,3];
 //      var b3=[2,3,5];
+//      var b4=[2,4,1];
 
-//      var alldata=[a1,a2,a3,b1,b2,b3]
+//      var alldata=[a1,a2,a3,a4,b1,b2,b3,b4]
 
 //      var initVerdi=[0,0,0];
+
+//     //  var accumulator = (sum = [], currentResult) => (sum[currentResult[0]]+=currentResult[2],sum);
+//     //  var resultat= alldata.reduce((accumulator),initVerdi);
     
-//      var resulat= _.reduce(alldata, 
-//         function(sum:number[], n):number[] {
-//             sum[n[0]]+=n[2]
-//             return sum ;
-//         }, initVerdi);
+//      var resultat = alldata.reduce((sum = [], currentResult) => (sum[currentResult[0]]+=currentResult[2],sum),initVerdi);
+    
+//     // var resultat= alldata.reduce( 
+//     //     function(sum = [], n) {
+//     //         sum[n[0]]+=n[2]
+//     //         return sum ;
+//     //     }, initVerdi);
 
-//       console.debug("resulat="+resulat);
-//       expect(resulat[0]).toBe(0);
-//       expect(resulat[1]).toBe(5);
-//       expect(resulat[2]).toBe(10);
+//     //  var resultat= _.reduce(alldata, 
+//     //     function(sum = [], n) {
+//     //         sum[n[0]]+=n[2]
+//     //         return sum ;
+//     //     }, initVerdi);
 
-//   }));
-  
-// });
+//     //  var resultat= _.reduce(alldata, 
+//     //     function(sum:number[], n):number[] {
+//     //         sum[n[0]]+=n[2]
+//     //         return sum ;
+//     //     }, initVerdi);
+
+//       resultat

@@ -5,7 +5,6 @@ import { TerningspillModule } from './terningspill/terningspill.module';
 import { TerningspillComponent } from './terningspill/terningspill.component';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [
     AppComponent
